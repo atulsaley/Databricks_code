@@ -1,0 +1,17 @@
+from pyspark.sql.functions import col,lit
+
+data=[(1,'Atul',1000),
+      (2,'Ajit',2000),
+       (3,'Satish',3000) ]
+column=['ID','Name','Salary']
+
+df=spark.createDataFrame(data=data,schema=column)
+#df.show()
+#df.printSchema()
+df1=df.withColumn('Country',lit('India'))
+#df1.show()
+
+
+df2=df1.withColumn("New Column",col('Salary'))
+
+df2.show()
