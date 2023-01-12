@@ -1,0 +1,8 @@
+data=[(1,'121212121212121212121212121444441212'),
+       (2,'2342342342'),
+       (3,'asdfasdfa'),
+       (4,'atul')]
+schema=['id','name']
+df=spark.createDataFrame(data=data,schema=schema)
+df.show(n=2,truncate=False,vertical=True)
+df.show(truncate=False,vertical=True)
