@@ -1,0 +1,42 @@
+df=spark.read.csv(path='dbfs:/FileStore/Data_Atul/List_of_cities_proper_by_population_density11.csv',header="true")
+display(df)
+df.printSchema()
+
+df=spark.read.format('csv').load(path='dbfs:/FileStore/Data_Atul/List_of_cities_proper_by_population_density11.csv',header='true')
+display(df)
+df.printSchema()
+
+
+df=spark.read.csv(path='dbfs:/FileStore/Data_Atul/Customer_Behaviour.csv',header='true')
+df.display()
+
+
+display(df)
+df.createOrReplaceTempView("cust")
+spark.sql("select * from cust").show()
+
+spark.sql('select count(1) from cust').show()
+
+spark.sql('select gender,count(1) from cust group by gender').show()
+
+
+df=spark.read.csv(path=['dbfs:/FileStore/Data_Atul/List_of_cities_proper_by_population_density11.csv','dbfs:/FileStore/Data_Atul/Customer_Behaviour.csv'])
+#Read two files
+display(df)
+
+
+#Read all files from folder
+from pyspark.sql.types import *
+schema=StructType().add(field="User ID",data type=IntegerType())\
+                    .add(filed"Gender",data type=StringType())\
+                    .add(filed"Age",data type=IntegerType())\
+                    .add(filed"EstimatedSalary",data type=IntegerType())\
+                    .add(filed"Purchased",data _type=IntegerType())\
+                    .add(field="Gender",data_type=StringType())\
+                    .add(field="Age",data_type=IntegerType())\
+                    .add(field="EstimatedSalary",data_type=IntegerType())\
+                    .add(field="Purchased",data_type=IntegerType())
+
+df=spark.read.csv(path='dbfs:/FileStore/Data_Atul/',schema=schema,header='true')
+display(df)
+df.printSchema()
